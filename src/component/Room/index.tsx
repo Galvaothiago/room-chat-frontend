@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState, FormEvent } from 'react'
 import { io } from 'socket.io-client'
 import { MessageNewUser } from '../MessageNewUser'
-import { Container, HeaderChat, InputMessage } from './styles'
+import { Container, ContainerContent, ContainerMessage, HeaderChat, InputMessage } from './styles'
 
 import { IoIosSend } from 'react-icons/io'
+import { Message } from '../Message'
 
 interface UserInfo {
     username: string
@@ -21,7 +22,7 @@ export const Room = ( { username }: UserInfo ) => {
 
     const [ allMessages, setAllMessage ] = useState<MessageProp[]>([])
 
-    const messageNotify = "Mew user connected!"
+    const messageNotify = "New user connected!"
 
     const socket = useMemo(() => io('http://localhost:3333/'),[])
 
@@ -49,9 +50,11 @@ export const Room = ( { username }: UserInfo ) => {
     }, [newUser])
 
     useEffect(() => {
-        socket.on('newMessage', socket => {
-            setAllMessage([...allMessages, socket])
+        socket.on('newMessage', message => {
+            setAllMessage([...allMessages, message])
         })
+
+        console.log(allMessages)
     }, [allMessages])
 
     return (
@@ -59,9 +62,20 @@ export const Room = ( { username }: UserInfo ) => {
             <HeaderChat>
                 { newUser && <MessageNewUser message={messageNotify}/>}
             </HeaderChat>
+            <ContainerContent>
+                { allMessages.map( message => {
+                    const ownMessage = message.username === username
+
+                     return <>
+                                <ContainerMessage messageProp={ownMessage}>
+                                    <Message ownMessage={ownMessage} {...message}/>
+                                </ContainerMessage>
+                           </>
+                      }) }
+            </ContainerContent>
             <div>
-                { allMessages.map( message => <span>{message.message}</span> ) }
             </div>
+
             <InputMessage onSubmit={e => handleSubmitMessage(e)}>
                 <input 
                     type="text" 

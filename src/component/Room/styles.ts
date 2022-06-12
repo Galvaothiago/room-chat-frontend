@@ -1,5 +1,7 @@
 import styled, { keyframes } from 'styled-components'
+import { MessageProp } from '../Message/styles'
  
+
 
 export const Container = styled.div`
     max-width: 45rem;
@@ -47,7 +49,6 @@ export const InputMessage = styled.form`
     }
 
     button { 
-        /* flex: .08; */
         min-width: 3.5rem;
         height: 3.5rem;
         border-radius: 50%;
@@ -67,4 +68,24 @@ export const InputMessage = styled.form`
             font-size: 1.5rem;
         }
     }
+`
+
+export const ContainerContent = styled.main`
+    width: 100%;
+    height: calc(100% - 11rem);
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    overflow-y: auto;
+
+`
+
+export const ContainerMessage = styled.div<MessageProp>`
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: ${({messageProp}) => messageProp ? 'flex-end' : 'flex-start'};
 `
