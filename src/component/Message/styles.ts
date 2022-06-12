@@ -44,6 +44,7 @@ export const ContainerOwnMessage = styled.div`
 
     p {
         margin-bottom: .5rem;
+        word-wrap: break-word;
     }
 
     time {
@@ -93,6 +94,7 @@ export const Container = styled.div`
 
     p {
         margin-bottom: .5rem;
+        word-wrap: break-word;
     }
 
     time {

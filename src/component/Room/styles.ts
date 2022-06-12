@@ -4,7 +4,7 @@ import { MessageProp } from '../Message/styles'
 
 
 export const Container = styled.div`
-    max-width: 45rem;
+    max-width: 35rem;
     width: 100%;
     height: calc(100vh - 6rem);
 

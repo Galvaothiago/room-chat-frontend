@@ -15,6 +15,20 @@ export const GlobalStyle = createGlobalStyle`
             font-size: 87.5%;
         }  
     }
+
+    *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #171717;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #2E0249;
+    border-radius: 5px;
+    /* border: 3px solid #ffffff; */
+  }
 `
 
 export const Home = styled.div`
