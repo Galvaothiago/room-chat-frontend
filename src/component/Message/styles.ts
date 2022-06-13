@@ -1,11 +1,21 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export interface MessageProp {
     messageProp: boolean
 }
 
+const upEffect = keyframes`
+    from {
+        transform: translateY(8px);
+        opacity: 0;
+    } to {
+        transform: translateY(0px);
+        opacity: 1;    
+    }
+`
+
 export const ContainerOwnMessage = styled.div`
-    max-width: 50%;
+    max-width: 60%;
     width: auto;
     padding: 1rem;
 
@@ -16,6 +26,7 @@ export const ContainerOwnMessage = styled.div`
     position: relative;
 
     color: #fafafa;
+    animation: ${upEffect} .2s ease-in-out;
 
     &::before {
         content: "";
@@ -56,7 +67,7 @@ export const ContainerOwnMessage = styled.div`
 `
 
 export const Container = styled.div`
-    max-width: 50%;
+    max-width: 60%;
     width: auto;
     padding: 1rem;
 
@@ -67,6 +78,7 @@ export const Container = styled.div`
     position: relative;
 
     color: #fafafa;
+    animation ${upEffect} .2s ease-in-out;
 
     &::before {
         content: "";

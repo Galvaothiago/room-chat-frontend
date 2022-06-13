@@ -77,7 +77,7 @@ export const ContainerContent = styled.main`
 
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
 
     overflow-y: auto;
 
