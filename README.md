@@ -48,3 +48,6 @@ $ yarn dev
 
 <img src="https://user-images.githubusercontent.com/72774408/173962543-768dd5e1-b1aa-4a62-971f-07830d1f3906.png" alt="tela inicial da aplicação" />
 
+## Screen chat message
+
+<img src="https://user-images.githubusercontent.com/72774408/173962775-15ab8f70-6141-43db-a940-0aac2d9a6f7e.png" alt="Tela do chat em si" />
