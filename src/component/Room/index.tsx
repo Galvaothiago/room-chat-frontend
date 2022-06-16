@@ -18,11 +18,8 @@ interface MessageProp {
 
 export const Room = ( { username }: UserInfo ) => {
     const [ message, setMessage ] = useState<string>('')
-    const [ newUser, setNewUser ] = useState<string>('')
-
+    const [ messageNotify, setMessageNotify ] = useState<string>('')
     const [ allMessages, setAllMessage ] = useState<MessageProp[]>([])
-
-    const messageNotify = "New user connected!"
 
     const socket = useMemo(() => io('http://localhost:3333/'),[])
 
@@ -38,29 +35,38 @@ export const Room = ( { username }: UserInfo ) => {
         setMessage('')
     }
 
-
     useEffect(() => {
         socket.on('newUser', (message) => {
-            setNewUser('New user connected')
+            setMessageNotify('New user connected')
 
             setTimeout(() => {
-                setNewUser('')
+                setMessageNotify('')
             }, 2000)
         })
-    }, [newUser])
+    }, [messageNotify])
+
+    useEffect(() => {
+        socket.on('userDisconnected', user => {
+            setMessageNotify(`${user.username} saiu da sala!`)
+
+            setTimeout(() => {
+                setMessageNotify('')
+            }, 2000)
+        })
+    }, [messageNotify])
+
 
     useEffect(() => {
         socket.on('newMessage', message => {
             setAllMessage([...allMessages, message])
         })
 
-        console.log(allMessages)
     }, [allMessages])
 
     return (
         <Container>
             <HeaderChat>
-                { newUser && <MessageNewUser message={messageNotify}/>}
+                { messageNotify && <MessageNewUser message={messageNotify}/>}
             </HeaderChat>
             <ContainerContent>
                 { allMessages.map( message => {

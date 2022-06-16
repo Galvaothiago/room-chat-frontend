@@ -28,8 +28,10 @@ const App = () => {
                 <input 
                   type="text" 
                   value={username} 
-                  onChange={e => setUsername(e.target.value)} 
+                  onChange={e => setUsername(e.target.value)}
+                  autoFocus={true} 
                   placeholder="digite seu username"/>
+
                 <button onClick={e => handleSignInChat(e)}>Entrar</button>
               </form>
             </div>
