@@ -46,6 +46,5 @@ $ yarn dev
 
 ## Screen to insert username
 
-<img src="![signin](https://user-images.githubusercontent.com/72774408/173962543-768dd5e1-b1aa-4a62-971f-07830d1f3906.png)
-" alt="tela inicial da aplicação" />
+<img src="https://user-images.githubusercontent.com/72774408/173962543-768dd5e1-b1aa-4a62-971f-07830d1f3906.png" alt="tela inicial da aplicação" />
 
